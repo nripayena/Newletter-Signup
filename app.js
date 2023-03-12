@@ -35,7 +35,7 @@ app.post('/signup', function (req, res) {
           }
         })
             .end(function(err, response) {
-              if(response.statusCode == 200)
+              if(response.status < 300 || (response.status === 400 && response.body.title === "Member Exists"))
                 {
                     res.sendFile(__dirname+"/success.html");
                 }
